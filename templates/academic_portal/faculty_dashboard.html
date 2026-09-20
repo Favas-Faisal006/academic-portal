@@ -1,0 +1,142 @@
+{% extends 'academic_portal/base.html' %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h3 class="fw-bold">Faculty Academic Dashboard</h3>
+        <p class="text-muted">Live Attendance Verification & Affect Analytics</p>
+    </div>
+</div>
+
+<a href="{% url 'export_attendance_csv' %}" class="btn btn-outline-success btn-sm">
+    Download Official Report (CSV)
+</a>
+
+<!-- Visual Analytics Summary -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-white fw-bold">Overall Classroom Affect</div>
+            <div class="card-body d-flex justify-content-center">
+                <canvas id="affectChart" style="max-height: 220px;"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-white fw-bold">Session Overview</div>
+            <div class="card-body">
+                <p><strong>Course:</strong> CST306 - Artificial Intelligence</p>
+                <p><strong>Total Enrolled Tracked:</strong> {{ attendance_records|length }}</p>
+                <p class="text-muted">Affect metric is captured via continuous facial orientation and landmark metrics during lecture windows.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('affectChart');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Attentive', 'Neutral', 'Non-Attentive'],
+            datasets: [{
+                data: [{{ avg_attentive }}, {{ avg_neutral }}, {{ avg_non_attentive }}],
+    backgroundColor: ['#198754', '#ffc107', '#dc3545']
+    }]
+    },
+    options: {
+        responsive: true,
+            maintainAspectRatio: false
+    }
+    });
+</script>
+
+<!-- Attendance & Engagement Section -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-white">
+        <h5 class="mb-0 fw-bold">Recent Lecture Sessions & Attendance</h5>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+            <tr>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Logged Time</th>
+                <th>Attentive %</th>
+                <th>Non-Attentive %</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for record in attendance_records %}
+            <tr>
+                <td><strong>{{ record.student.full_name }}</strong> ({{ record.student.register_number }})</td>
+                <td>{{ record.session.subject_code }}</td>
+                <td>
+                        <span class="badge {% if record.status == 'Present' %}bg-success{% elif record.status == 'Duty Leave' %}bg-warning{% else %}bg-danger{% endif %}">
+                            {{ record.status }}
+                        </span>
+                </td>
+                <td>{{ record.time_logged }}</td>
+                <td><span class="text-success fw-bold">{{ record.attentive_rate }}%</span></td>
+                <td><span class="text-danger fw-bold">{{ record.non_attentive_rate }}%</span></td>
+                <td>
+                    <form method="POST" action="{% url 'toggle_attendance' record.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Toggle Status</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="7" class="text-center py-3">No attendance records found.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Duty Leave Review Section -->
+<div class="card shadow-sm">
+    <div class="card-header bg-white">
+        <h5 class="mb-0 fw-bold">Pending Duty Leave Applications</h5>
+    </div>
+    <div class="card-body p-0">
+        <table class="table align-middle mb-0">
+            <thead class="table-light">
+            <tr>
+                <th>Student</th>
+                <th>Leave Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for leave in pending_leaves %}
+            <tr>
+                <td>{{ leave.student.full_name }}</td>
+                <td>{{ leave.leave_date }}</td>
+                <td>{{ leave.reason }}</td>
+                <td><span class="badge bg-warning text-dark">{{ leave.status }}</span></td>
+                <td>
+                    <form method="POST" action="{% url 'process_leave' leave.id 'approve' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                    </form>
+                    <form method="POST" action="{% url 'process_leave' leave.id 'reject' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center py-3 text-muted">No pending duty leaves.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

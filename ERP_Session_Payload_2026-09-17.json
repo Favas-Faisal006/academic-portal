@@ -1,0 +1,359 @@
+{
+    "session_date": "2026-09-17",
+    "subject_code": "CST306",
+    "subject_name": "Artificial Intelligence",
+    "records": [
+        {
+            "student_id": "Abhinay",
+            "status": "Present",
+            "time_logged": "11:46:05 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 81.82,
+                "neutral_rate": 9.09,
+                "non_attentive_rate": 9.09
+            }
+        },
+        {
+            "student_id": "Abhishek",
+            "status": "Present",
+            "time_logged": "11:47:10 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 61.54,
+                "non_attentive_rate": 38.46
+            }
+        },
+        {
+            "student_id": "Adhwaith",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Afna",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Aiswarya",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Akshara",
+            "status": "Present",
+            "time_logged": "11:46:50 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 60.0,
+                "neutral_rate": 40.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Alsa",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Aman",
+            "status": "Present",
+            "time_logged": "11:45:52 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 66.67,
+                "neutral_rate": 33.33,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Angelo",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Anjali",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Anoop",
+            "status": "Present",
+            "time_logged": "11:46:50 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 100.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Aravind",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Arsha",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Ashwin",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Athulya",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Basil",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Betson",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Favas",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Fiona",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Gouri",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Jishnu",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Johns",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Lal Krishna",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Mahadev",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Nayana_K",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Nayana_Zinaj",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Niranjana",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Sanjay",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Sreya",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Sujithmon",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Venu",
+            "status": "Absent",
+            "time_logged": "-",
+            "liveness_passed": false,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 0.0,
+                "non_attentive_rate": 0.0
+            }
+        },
+        {
+            "student_id": "Vishnupriya",
+            "status": "Present",
+            "time_logged": "11:45:48 PM",
+            "liveness_passed": true,
+            "engagement": {
+                "attentive_rate": 0.0,
+                "neutral_rate": 100.0,
+                "non_attentive_rate": 0.0
+            }
+        }
+    ]
+}

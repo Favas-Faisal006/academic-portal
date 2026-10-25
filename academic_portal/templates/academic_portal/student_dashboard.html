@@ -1,0 +1,146 @@
+{% extends 'academic_portal/base.html' %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h3 class="fw-bold">{{ student.full_name }}</h3>
+        <p class="text-muted">Register Number: <strong>{{ student.register_number }}</strong> | Semester: {{ student.semester }}</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <div class="p-3 bg-white shadow-sm rounded border d-inline-block text-center">
+            <span class="d-block text-muted small">Overall Attendance</span>
+            <span class="fs-4 fw-bold {% if attendance_pct >= 75 %}text-success{% else %}text-danger{% endif %}">
+                {{ attendance_pct }}%
+            </span>
+        </div>
+        <div class="p-3 bg-white shadow-sm rounded border d-inline-block text-center ms-2">
+            <span class="d-block text-muted small">KTU Points</span>
+            <span class="fs-4 fw-bold text-primary">{{ student.ktu_activity_points }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Left Column: Duty Leaves & Internals -->
+    <div class="col-md-5">
+        <!-- Duty Leave Application -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white fw-bold">Apply for Duty Leave</div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'apply_duty_leave' student.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label small text-muted">Date</label>
+                        <input type="date" name="leave_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-muted">Reason / Activity</label>
+                        <textarea name="reason" rows="2" class="form-control" placeholder="e.g. Technical Symposium / Sports" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Internal Marks Table -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white fw-bold">Internal Assessment Marks</div>
+            <div class="card-body p-0">
+                <table class="table table-sm mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Series 1</th>
+                        <th>Series 2</th>
+                        <th>Assignment</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mark in internals %}
+                    <tr>
+                        <td>{{ mark.subject_code }}</td>
+                        <td>{{ mark.series_1_marks }}</td>
+                        <td>{{ mark.series_2_marks }}</td>
+                        <td>{{ mark.assignment_marks }}</td>
+                        <td class="fw-bold">{{ mark.total_internal }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center py-3 text-muted small">No internal marks published.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Attendance & Activity Point Ledger -->
+    <div class="col-md-7">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white fw-bold">Lecture Attendance & Attention History</div>
+            <div class="card-body p-0">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Logged</th>
+                        <th>Attentive</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in attendance_records %}
+                    <tr>
+                        <td>{{ record.session.session_date }}</td>
+                        <td>{{ record.session.subject_code }}</td>
+                        <td>
+                                <span class="badge {% if record.status == 'Present' %}bg-success{% elif record.status == 'Duty Leave' %}bg-warning{% else %}bg-danger{% endif %}">
+                                    {{ record.status }}
+                                </span>
+                        </td>
+                        <td>{{ record.time_logged }}</td>
+                        <td><span class="text-success fw-bold">{{ record.attentive_rate }}%</span></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center py-3 text-muted">No attendance logged yet.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Activity Point Log -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white fw-bold">KTU Activity Points Ledger</div>
+            <div class="card-body p-0">
+                <table class="table table-sm mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Activity</th>
+                        <th>Points Claimed</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for act in activities %}
+                    <tr>
+                        <td>{{ act.activity_name }}</td>
+                        <td>{{ act.points_claimed }}</td>
+                        <td>
+                            {% if act.verified %}
+                            <span class="badge bg-success">Verified</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Pending Audit</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="3" class="text-center py-3 text-muted small">No activity points submitted.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
